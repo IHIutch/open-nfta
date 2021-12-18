@@ -1,5 +1,6 @@
 import React from "react";
 import { MapContainer, TileLayer, ZoomControl } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 export default function Map() {
   return (
