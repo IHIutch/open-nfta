@@ -1,4 +1,4 @@
-import { useQuery } from "@chakra-ui/react";
+import { useQuery } from "react-query";
 import { axiosGetStopTime, axiosGetStopTimes } from "../axios/stopTimes";
 
 export const useGetStopTimes = (params = null) => {

@@ -1,4 +1,4 @@
-import { useQuery } from "@chakra-ui/react";
+import { useQuery } from "react-query";
 import { axiosGetRoute, axiosGetRoutes } from "../axios/routes";
 
 export const useGetRoutes = (params = null) => {

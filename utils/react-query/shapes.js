@@ -1,4 +1,4 @@
-import { useQuery } from "@chakra-ui/react";
+import { useQuery } from "react-query";
 import { axiosGetShape, axiosGetShapes } from "../axios/shapes";
 
 export const useGetShapes = (params = null) => {

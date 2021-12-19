@@ -1,4 +1,4 @@
-import { useQuery } from "@chakra-ui/react";
+import { useQuery } from "react-query";
 import { axiosGetTrip, axiosGetTrips } from "../axios/trips";
 
 export const useGetTrips = (params = null) => {
