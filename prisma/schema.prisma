@@ -1,0 +1,76 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://postgres:postgres@localhost:5432/open-nfta"
+}
+
+model Agency {
+  id             Int    @id @default(autoincrement())
+  agencyId       String @db.VarChar(255)
+  agencyName     String @db.VarChar(255)
+  agencyUrl      String @db.VarChar(255)
+  agencyTimezone String
+  agencyLang     String
+  agencyPhone    String @db.VarChar(255)
+}
+
+model CalendarDates {
+  id            Int      @id @default(autoincrement())
+  serviceId     Int
+  date          DateTime @db.Date
+  exceptionType Int
+}
+
+model Routes {
+  id             Int     @id @default(autoincrement())
+  routeId        Int
+  agencyId       String  @db.VarChar(255)
+  routeShortName String  @db.VarChar(255)
+  routeLongName  String  @db.VarChar(255)
+  routeType      Int
+  routeUrl       String? @db.VarChar(255)
+  routeColor     String? @db.VarChar(255)
+}
+
+model Shapes {
+  id                Int    @id @default(autoincrement())
+  shapeId           Int
+  shapePtLat        Float
+  shapePtLon        Float
+  shapePtSeq        Int
+  shapeDistTraveled Float?
+}
+
+model StopTimes {
+  id                Int      @id @default(autoincrement())
+  tripId            Int
+  arrivalTime       DateTime @db.Time(3)
+  departureTime     DateTime @db.Time(3)
+  stopId            Int
+  stopSequence      Int
+  pickupType        Int?     @default(0)
+  dropOffType       Int?     @default(0)
+  shapeDistTraveled Float?
+}
+
+model Stops {
+  id                 Int     @id @default(autoincrement())
+  stopId             Int
+  stopCode           String  @db.VarChar(255)
+  stopName           String  @db.VarChar(255)
+  stopDesc           String? @db.Text
+  stopLat            Float
+  stopLon            Float
+  zoneId             Int
+  wheelchairBoarding Int?    @default(0)
+}
+
+model Trips {
+  id           Int    @id @default(autoincrement())
+  routeId      Int
+  serviceId    Int
+  tripId       Int
+  tripHeadsign String @db.VarChar(255)
+  directionId  Int
+  blockId      Int?
+  shapeId      Int
+}
