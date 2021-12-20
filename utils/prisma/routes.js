@@ -1,3 +1,5 @@
+import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 export const prismaGetRoutes = async ({
@@ -5,7 +7,7 @@ export const prismaGetRoutes = async ({
   select: [],
   include: [],
 }) => {
-  return await prisma.route.findMany({
+  return await prisma.routes.findMany({
     where,
     // select: select || null,
     include: include || null,
@@ -17,7 +19,7 @@ export const prismaGetRoute = async ({
   select: [],
   include: [],
 }) => {
-  return await prisma.route.findUnique({
+  return await prisma.routes.findUnique({
     where,
     // select: select || null,
     include: include || null,

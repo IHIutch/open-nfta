@@ -1,3 +1,5 @@
+import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 export const prismaGetShapes = async ({
@@ -5,7 +7,7 @@ export const prismaGetShapes = async ({
   select: [],
   include: [],
 }) => {
-  return await prisma.shape.findMany({
+  return await prisma.shapes.findMany({
     where,
     // select: select || null,
     include: include || null,
@@ -20,7 +22,7 @@ export const prismaGetShape = async ({
   select: [],
   include: [],
 }) => {
-  return await prisma.shape.findUnique({
+  return await prisma.shapes.findUnique({
     where,
     // select: select || null,
     include: include || null,

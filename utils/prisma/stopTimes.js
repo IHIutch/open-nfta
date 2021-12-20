@@ -1,3 +1,5 @@
+import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 export const prismaGetStopTimes = async ({
@@ -5,7 +7,7 @@ export const prismaGetStopTimes = async ({
   select: [],
   include: [],
 }) => {
-  return await prisma.stopTime.findMany({
+  return await prisma.stopTimes.findMany({
     where,
     // select: select || null,
     include: include || null,
@@ -20,7 +22,7 @@ export const prismaGetStopTime = async ({
   select: [],
   include: [],
 }) => {
-  return await prisma.stopTime.findUnique({
+  return await prisma.stopTimes.findUnique({
     where,
     // select: select || null,
     include: include || null,
