@@ -1,3 +1,4 @@
+import { resStatusType } from "@/utils/constants";
 import { prismaGetRoute, prismaGetRoutes } from "@/utils/prisma/routes";
 
 const handler = async (req, res) => {
@@ -14,7 +15,7 @@ const handler = async (req, res) => {
         }
         res.status(resStatusType.SUCCESS).json(data);
       } catch (error) {
-        res.status(resStatusType.BAD_REQUEST).json(error);
+        res.status(resStatusType.BAD_REQUEST).json(error.message);
       }
       break;
     default:
