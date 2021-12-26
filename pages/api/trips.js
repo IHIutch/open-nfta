@@ -7,20 +7,17 @@ const handler = async (req, res) => {
   const paramString = req.url.split("?")[1];
   const query = paramString ? qs.parse(paramString) : {};
 
-  // console.log({ query });
-
   switch (method) {
     case "GET":
       try {
         let data = null;
         if (query?.unique) {
-          data = await prismaGetTrip({ ...query });
+          data = await prismaGetTrip(query);
         } else {
           data = await prismaGetTrips(query);
         }
         res.status(resStatusType.SUCCESS).json(data);
       } catch (error) {
-        console.log({ error });
         res.status(resStatusType.BAD_REQUEST).json(error.message);
       }
       break;
